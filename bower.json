@@ -1,0 +1,25 @@
+{
+  "name": "chat-mogodb",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "<onesuch07@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "socket.io": "^2.1.0"
+  },
+  "devDependencies": {
+    "jquery": "^3.3.1"
+  }
+}
