@@ -1,9 +1,9 @@
 'use strict';
 const express = require('express'),
-    app = express(),
     nunjucks = require('nunjucks'), // библиотека работающая на js с html
+    app = express(),
     server = require('http').Server(app),
-    io = require('socket.io')(server, { serveClient: true }); // serveClient(option) - будет ли храниться socket.io на клиенте
+    io = require('socket.io')(server); // serveClient(option) - будет ли храниться socket.io на клиенте
 
 /* Библиотека Nunjucks */
 nunjucks.configure('./client', { // конфигурация для nunjucks
@@ -13,7 +13,8 @@ nunjucks.configure('./client', { // конфигурация для nunjucks
 });
 /* ------------------- */
 
-app.use('/client', express.static('./client')); // /client - енпойнт для поиска путей(не должны сопадать) пример src="/client/img/*.png"
+// /client - енпойнт для поиска путей(не должны сопадать) пример src="/client/img/*.png"
+app.use('/client', express.static('./client')); // енпойнт/url
 
 app.get('/', (req, res) => { // / - енпойнт
     res.render('index.html', {date: new Date()});
@@ -25,6 +26,12 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('user disconnect');
     });
+});
+
+io.on('connection', (socket) => {
+    socket.on('chat message', (msg) => {
+        socket.emit('chat message', msg);
+    })
 });
 /* -------- */
 

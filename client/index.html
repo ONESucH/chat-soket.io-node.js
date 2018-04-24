@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NodeJs Socket.io Nunjucks - chat</title>
-    <script src="/client/vendor/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="/client/css/style.css">
+    <script src="/client/vendor/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 {% if error %}
@@ -23,27 +23,26 @@
     <script src="/client/js/auth.js"></script>
 {% else %}
     <div class="container">
-    <div class="write-text-in-chat">
-        <div class="game">
-            <h1>Play game</h1>
-            <h5>{{date}}</h5>
-        </div>
-        <div class="main-write-text-in-chat">
-            <label>
-                <input type="text" id="input" placeholder="Отправить сообщение">
-                <button onclick="postMessage()">Отправить</button>
-            </label>
+        <form class="write-text-in-chat">
+            <div class="game">
+                <h1>Play game</h1>
+                <h5>{{date}}</h5>
+            </div>
+            <div class="main-write-text-in-chat">
+                <label>
+                    <input type="text" id="input" placeholder="Отправить сообщение">
+                    <button type="submit">Отправить</button>
+                </label>
+            </div>
+        </form>
+        <div class="chat">
+            <ul class="chat-text"></ul>
         </div>
     </div>
-    <div class="chat">
-        <ul class="chat-text"></ul>
-    </div>
-</div>
     <script src="/client/js/auth.js"></script>
 {% endif %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script> <!-- NodeJs и Js не связанны, используем CDN -->
-<script>io();</script>
 <script src="/client/js/main.js"></script>
 </body>
 </html>

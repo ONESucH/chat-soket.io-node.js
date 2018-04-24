@@ -53,3 +53,13 @@ body {
     max-width: 30%;
     background: green;
 }
+.chat-text {
+    padding: 0;
+    list-style: none;
+}
+.chat-text li {
+    margin: 5px 20px;
+    padding: 15px 10px;
+    border-radius: 6px;
+    background: cornflowerblue;
+}
