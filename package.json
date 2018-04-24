@@ -1,22 +1,30 @@
 {
   "name": "chat-mogodb",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "socket.io - chat",
+  "main": "server_config.js",
   "scripts": {
-    "start": "node server_config.js"
+    "start": "node server/server"
   },
-  "author": "<onesuch07@gmail.com>",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ONESucH/chat-soket.io-node.js.git"
+  },
+  "keywords": [
+    "socket.io",
+    "nodejs",
+    "express",
+    "chat"
+  ],
+  "author": "Богданов Илья <onesuch07@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ONESucH/chat-soket.io-node.js/issues"
+  },
+  "homepage": "https://github.com/ONESucH/chat-soket.io-node.js#readme",
   "dependencies": {
-    "fs": "0.0.1-security"
-  },
-  "devDependencies": {
-    "events": "^2.0.0",
     "express": "^4.16.3",
-    "jquery": "^3.3.1",
-    "path": "^0.12.7",
-    "socket.io": "^2.1.0",
-    "socket.io-client": "^2.1.0"
+    "nunjucks": "^3.1.2",
+    "socket.io": "^2.1.0"
   }
 }
