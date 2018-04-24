@@ -56,10 +56,42 @@ body {
     flex-grow: 1;
 }
 
+.show-hide-button {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.70);
+    cursor: pointer;
+    font-size: 20px;
+    min-width: 20px;
+    border-radius: 7px;
+    z-index: 5;
+}
+
+.show-hide-button i {
+    color: #fff;
+    transition: 1s;
+}
+
+.show-hide-button:hover > i {
+    position: fixed;
+    right: 8px;
+    opacity: .3;
+}
+
 .chat {
+    display: none;
+    position: relative;
     width: 100%;
     max-width: 30%;
     background: green;
+    padding-top: 30px;
+    z-index: 1;
 }
 
 .chat-text {
