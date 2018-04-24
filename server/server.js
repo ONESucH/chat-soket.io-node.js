@@ -21,17 +21,14 @@ app.get('/', (req, res) => { // / - енпойнт
 });
 
 /* Sockets  */
-io.on('connection', (socket) => {
+io.on('connection', function(socket){
     console.log('user connected');
-    socket.on('disconnect', () => {
-        console.log('user disconnect');
+    socket.on('disconnected', () => {
+        console.log('user disconnected');
     });
-});
-
-io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
-        socket.emit('chat message', msg);
-    })
+        io.emit('chat message', msg);
+    });
 });
 /* -------- */
 
