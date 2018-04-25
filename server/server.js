@@ -23,7 +23,7 @@ app.get('/', (req, res) => { // / - енпойнт
 /* Sockets  */
 io.on('connection', function(socket){
     console.log('user connected');
-    socket.on('disconnected', () => {
+    socket.on('disconnect', () => {
         console.log('user disconnected');
     });
     socket.on('chat message', (msg) => {

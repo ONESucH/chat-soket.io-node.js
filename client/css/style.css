@@ -17,7 +17,7 @@ body {
     display: flex;
     flex-flow: column;
     width: 100%;
-    max-width: 70%;
+    transition: 2s;
 }
 
 .main-write-text-in-chat {
@@ -46,6 +46,10 @@ body {
     border-radius: 0 6px 6px 0;
     cursor: pointer;
     border: none;
+}
+
+.main-write-text-in-chat button:hover {
+    box-shadow: 0 0 15px 1px #fff;
 }
 
 .game {
@@ -80,7 +84,6 @@ body {
 
 .show-hide-button:hover > i {
     position: fixed;
-    right: 8px;
     opacity: .3;
 }
 
@@ -88,7 +91,8 @@ body {
     display: none;
     position: relative;
     width: 100%;
-    max-width: 30%;
+    max-width: 20%;
+    min-width: 350px;
     background: green;
     padding-top: 30px;
     z-index: 1;
@@ -104,6 +108,7 @@ body {
     margin: 5px;
     padding: 15px 10px;
     border-radius: 6px;
+    font-size: 14px;
     background: cornflowerblue;
 }
 

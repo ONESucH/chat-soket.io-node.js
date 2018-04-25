@@ -18,10 +18,6 @@ $(() => {
        console.log(msg);
        $('.chat-text').prepend('<li>'+ msg +'</li>');
     });
-    
-    socket.on('connection', function(data) {
-        socket.emit('chat message', data);
-    });
     /* --------------------------------------- */
     
     
