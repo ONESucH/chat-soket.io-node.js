@@ -31,7 +31,7 @@ app.get('/', (req, res) => { // / - енпойнт
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended': 'false'}));
-// енпойнтs не должны совпадать
+// енпойнтs 
 app.use('/client', express.static('./client')); // енпойнт/url
 app.use('/clients', chat); // енпойнт/url
 

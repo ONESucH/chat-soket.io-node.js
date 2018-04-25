@@ -8,21 +8,26 @@
     <link rel="shortcut icon" href="/client/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/client/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/client/css/global.css">
+    <link rel="stylesheet" href="/client/css/registration.css">
     <link rel="stylesheet" href="/client/css/style.css">
     <script src="/client/vendor/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 {% if error %}
     <div class="container">
-    <div class="write-text-in-chat">
-        <div class="game">
-            <h1>Error - {{error}}</h1>
+        <div class="max-size-window">
+            <div class="app-registartion">
+                <form class="registration-form">
+                    <h1>Форма регистрации</h1>
+                    <label><input type="text" placeholder="Имя" required></label>
+                    <label><input type="text" placeholder="Фамилия" required></label>
+                    <label><input type="text" placeholder="Ник" required></label>
+                    <label><input type="email" placeholder="Mail" required></label>
+                    <label><input type="submit"></label>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="chat">
-        <ul class="chat-text"></ul>
-    </div>
-</div>
     <script src="/client/js/unauth.js"></script>
 {% else %}
     <div class="container">

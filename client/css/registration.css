@@ -1,0 +1,47 @@
+.app-registartion {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  text-align: center;
+}
+.registration-form {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  margin: 5vw auto 0;
+  max-width: 300px;
+  min-width: 250px;
+}
+.registration-form label {
+  width: 100%;
+}
+.registration-form input {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  margin: 6px auto;
+}
+.registration-form input[type=text],
+.registration-form input[type=email] {
+  width: 100%;
+}
+.registration-form input[type=submit] {
+  cursor: pointer;
+  transition: .6s;
+}
+.registration-form input[type=submit]:hover {
+  background: #00ff1a;
+}
+.registration-form h1 {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 25px;
+  color: #fff;
+  font-weight: 900;
+  text-shadow: 0 0 10px #fff;
+}
+/*# sourceMappingURL=registration.css.map */
