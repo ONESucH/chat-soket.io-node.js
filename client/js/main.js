@@ -33,6 +33,8 @@ $(() => {
             $('.show-hide-button i').attr('class','fa fa-angle-left');
             menuRight = false;
         }
-    })
+    });
+    
+    
 });
 
