@@ -3,23 +3,24 @@ $(() => {
     /* Собираем данные и выводим во frontend */
     const socket = io();
     let menuRight = false;
-
+    
     $('form').submit(function (e) {
-        if ($('#input').val() === '') return false;
+        let inputData = $('#input');
+        
+        if (inputData.val() === '') return false;
         
         e.preventDefault();
         
-        socket.emit('chat message', $('#input').val());
-        $('#input').val('');
+        socket.emit('chat message', inputData.val());
+        inputData.val('');
         return false;
     });
     
-    socket.on('chat message', function(msg){
-       console.log(msg);
+    socket.on('chat message', (msg)=> {
+       /*console.log(msg);*/
        $('.chat-text').prepend('<li>'+ msg +'</li>');
     });
     /* --------------------------------------- */
-    
     
     /* Открыть/Скрыть чат */
     $('.show-hide-button').on('click', () => {
