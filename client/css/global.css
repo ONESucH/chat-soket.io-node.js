@@ -1,0 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  overflow: hidden;
+}
+.max-size-window {
+  max-width: 1400px;
+  margin: auto;
+}
+/*# sourceMappingURL=global.css.map */
