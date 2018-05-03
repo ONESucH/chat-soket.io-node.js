@@ -1,5 +1,5 @@
 /* Sockets  */
-const UserModel = require('./models/Chat-model-user');
+const UserModel = require('./models/Chat-model-user'); // model
 
 module.exports = io => {
     io.on('connection', (socket) => {
@@ -36,7 +36,7 @@ module.exports = io => {
                 .exec((err, message) => { // Возращает объекты без приявзки Mongoose
                     if (!err) {
                         io.emit('history', message);
-                        socket.to('main-table').emit('history', message);
+                        /*socket.to('main-table').emit('history', message);*/
                     }
                 })
         })
