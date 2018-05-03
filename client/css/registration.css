@@ -4,9 +4,9 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
   display: flex;
   text-align: center;
+  background: rgba(0, 0, 0, 0.85);
 }
 .registration-form {
   display: flex;

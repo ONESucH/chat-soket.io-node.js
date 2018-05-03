@@ -1,11 +1,12 @@
 const mongoose = require('mongoose'),
     ChatUsersSchema = new mongoose.Schema({
         name: String,
-        family: String,
+        content: String,
+        user_id: String,
         nick: String,
         img: String,
         email: String,
-        date_update: {type: Date, default: Date.now}
+        date: {type: Date}
     });
 
 module.exports = mongoose.model('Chat', ChatUsersSchema);

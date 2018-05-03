@@ -4,55 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NodeJs Socket.io Nunjucks - chat</title>
+    <title>NodeJs Socket.io Nunjucks Express - chat</title>
     <link rel="shortcut icon" href="/client/favicon.ico" type="image/x-icon">
+    <script src="/client/vendor/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="/client/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/client/css/global.css">
     <link rel="stylesheet" href="/client/css/registration.css">
     <link rel="stylesheet" href="/client/css/style.css">
-    <script src="/client/vendor/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 {% if error %}
-    <div class="container">
-        <div class="max-size-window">
-            <div class="app-registartion">
-                <form class="registration-form">
-                    <h1>Форма регистрации</h1>
-                    <label><input type="text" placeholder="Имя" required></label>
-                    <label><input type="text" placeholder="Фамилия" required></label>
-                    <label><input type="text" placeholder="Ник" required></label>
-                    <label><input type="email" placeholder="Mail" required></label>
-                    <label><input type="submit"></label>
-                </form>
-            </div>
+<div class="container">
+    <div class="max-size-window">
+        <div class="app-registartion">
+            <form class="registration-form">
+                <h1>Форма регистрации</h1>
+                <label><input type="text" placeholder="Имя" required></label>
+                <label><input type="text" placeholder="Фамилия" required></label>
+                <label><input type="text" placeholder="Ник" required></label>
+                <label><input type="email" placeholder="Mail" required></label>
+                <label><input type="submit"></label>
+            </form>
         </div>
     </div>
-    <script src="/client/js/unauth.js"></script>
+</div>
+<script src="/client/js/unauth.js"></script>
 {% else %}
-    <div class="container">
-        <form class="write-text-in-chat">
-            <div class="game">
-                <h1>Play game</h1>
-                <h5>{{date}}</h5>
-            </div>
-            <div class="main-write-text-in-chat">
-                <label>
-                    <input type="text" id="input" placeholder="Отправить сообщение">
-                    <button type="submit">Отправить</button>
-                </label>
-            </div>
-        </form>
-        <div class="show-hide-button">
-            <i class="fa fa-angle-left" aria-hidden="true"></i>
+<div class="container">
+    <form class="write-text-in-chat">
+        <div class="game">
+            <h1>Play game</h1>
+            <h5>{{ date }}</h5>
+            <span>{{ root }}</span>
         </div>
-        <div class="chat">
-            <ul class="chat-text"></ul>
+        <div class="main-write-text-in-chat">
+            <label>
+                <input type="text" id="input" placeholder="Отправить сообщение">
+                <button type="submit">Отправить</button>
+            </label>
         </div>
+    </form>
+    <div class="show-hide-button">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
     </div>
-    <script src="/client/js/auth.js"></script>
+    <div class="chat">
+        <ul class="chat-text"></ul>
+    </div>
+</div>
+<script src="/client/js/auth.js"></script>
 {% endif %}
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script> <!-- NodeJs и Js не связанны, используем CDN -->
 <script src="/client/js/main.js"></script>
 </body>
