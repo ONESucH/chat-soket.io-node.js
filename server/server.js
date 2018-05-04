@@ -63,7 +63,7 @@ app.use(bodyParser.urlencoded({'extended': 'false'}));
 app.use('/client', express.static('./client')); // енпойнт/url
 app.use('/clients', chat); // енпойнт/url
 
-require('./sockets'); // импортируем в файл io
+require('./sockets')(io); // импортируем в файл io
 
 /* 404 */
 app.use((req, res, next) => {
