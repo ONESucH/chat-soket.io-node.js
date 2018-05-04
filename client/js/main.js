@@ -2,36 +2,18 @@
 let menuRight = false;
 
 $(document).ready(() => {
-    /* Собираем данные и выводим во frontend */
+    /* Собираем данные и выводим */
     let socket = io();
-    
-    $.ajax({
-        url: '/clients',
-        type: 'GET',
-        dataType: 'json',
-        success: (data) => {
-            if (data.length !== '') {
-                console.log('data', data);
-                console.log('data.email', data[0].email);
-            } 
-        },
-        error: (err) => {
-            console.log('err', err);
-            window.location.href = '';
-            return false;
-        }
-    });
 
-    $('form').submit(function (e) {
-        let inputData = $('#input');
-
-        if (inputData.val() === '') return false;
-
+    $('form').on('submit', function (e) {
         e.preventDefault();
+        
+        let messageChat = $('#message-chat');
 
-        socket.emit('chat message', inputData.val());
-        inputData.val('');
-        return false;
+        if (messageChat.val() === '') return false;
+
+        socket.emit('chat message', messageChat.val());
+        messageChat.val('');
     });
 
     socket.on('chat message', (msg) => {
@@ -39,19 +21,18 @@ $(document).ready(() => {
         $('.chat-text').prepend('<li>' + msg + '</li>');
     });
     /* --------------------------------------- */
-});
 
-
-/* Открыть/Скрыть чат */
-$('.show-hide-button').on('click', () => {
-    if (!menuRight) {
-        $('.chat').fadeIn('slow');
-        $('.show-hide-button i').attr('class', 'fa fa-angle-right');
-        menuRight = true;
-    } else {
-        $('.chat').fadeOut('slow');
-        $('.show-hide-button i').attr('class', 'fa fa-angle-left');
-        menuRight = false;
-    }
+    /* Открыть/Скрыть чат */
+    $('.show-hide-button').on('click', () => {
+        if (!menuRight) {
+            $('.chat').fadeIn('slow');
+            $('.show-hide-button i').attr('class', 'fa fa-angle-right');
+            menuRight = true;
+        } else {
+            $('.chat').fadeOut('slow');
+            $('.show-hide-button i').attr('class', 'fa fa-angle-left');
+            menuRight = false;
+        }
+    });
+    /* --------------------------------------- */
 });
-/* --------------------------------------- */
