@@ -5,22 +5,18 @@ const express = require('express'),
     nunjucks = require('nunjucks'), // библиотека шаблонов на js
     app = express(),
     server = require('http').Server(app),
-    logger = require('morgan'),
-    bodyParser = require('body-parser'), // json parser
     io = require('socket.io')(server, {serveClient: true}), // serveClient(option) - будет ли храниться socket.io на клиенте
     mongoose = require('mongoose'),
     MongoClient = require('mongodb').MongoClient,
-    chat = require('../server/routers/Chat-rouser-user'), // модель запросов
+    logger = require('morgan'),
+    bodyParser = require('body-parser'), // json parser
     passport = require('passport'), // регистрация
+    cookieParser = require('cookie-parser'), // регистрация
     JwtStrategy = require('passport-jwt').Strategy, // регистрация
-    ExtractJwt = require('passport-jwt').ExtractJwt, // регистрация
-    opts = { // // регистрация
-        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: 'CS/2-A9YW@UwLK4FFZaTn/r'
-    };
+    { jwt } = require('./config'); // Регистрация, токен
 
 /* Проверяем регистрацию */
-passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
+passport.use(new JwtStrategy(jwt, (jwt_payload, done) => {
     // Проверяем данные пользователя по токену
     if (jwt_payload !== void(0)) return done(false, jwt_payload);
     console.log('jwt_payload', jwt_payload);
@@ -32,6 +28,7 @@ mongoose.Promise = require('bluebird'); // bluebird библиотека для 
 mongoose.connect('mongodb://localhost/chat', {promiseLibrary: require('bluebird')})
     .then(() => console.log('MongoDB connected'))
     .catch((err) => console.error(err));
+mongoose.set('debug', true);
 
 /* Библиотека Nunjucks */
 nunjucks.configure('./client', { // конфигурация для nunjucks
@@ -40,30 +37,14 @@ nunjucks.configure('./client', { // конфигурация для nunjucks
     watch: true
 });
 
-/* Проверяем Аутентификацию */
-function getAuth(req, res, next) {
-    console.log('Проверяем аутентификацию');
-    passport.authenticate('jwt', {session: false}, (err, decryptToken, jwtErr) => { // err/token/err-jwt
-        if (jwtErr !== void(0) || err !== void(0)) return res.render('index.html', {error: err || jwtErr});
-        req.user = decryptToken;
-        next();
-    })(req, res, next);
-}
-
-/* Сессии */
-app.get('/', getAuth, (req, res) => { // / - енпойнт
-    res.render('index.html', {
-        date: new Date()
-    });
-});
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended': 'false'}));
-app.use('/client', express.static('./client')); // енпойнт/url
-app.use('/clients', chat); // енпойнт/url
+app.use(cookieParser());
 
+require('./router')(app); // импортируем в файл app
 require('./sockets')(io); // импортируем в файл io
+require('../client/js/unauth')(MongoClient); // импортируем в файл io
 
 /* 404 */
 app.use((req, res, next) => {
@@ -74,11 +55,8 @@ app.use((req, res, next) => {
 
 /* error handler */
 app.use((err, req, res, next) => {
-    // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
     res.status(err.status || 500);
     res.render('error');
 });

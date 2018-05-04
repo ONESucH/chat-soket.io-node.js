@@ -3,7 +3,9 @@ let menuRight = false;
 
 $(document).ready(() => {
     /* Собираем данные и выводим */
-    let socket = io();
+    let socket = io.connect('http://localhost:3000');
+    
+    console.log('main socket loading', socket);
 
     $('form').on('submit', function (e) {
         e.preventDefault();

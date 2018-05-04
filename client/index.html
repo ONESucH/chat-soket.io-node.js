@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/client/css/style.css">
 </head>
 <body>
-{% if data %}
+{% if error %}
 <div class="container">
     <div class="max-size-window">
         <div class="app-registartion">
@@ -22,6 +22,8 @@
                 <label><input name="name" type="text" placeholder="Имя" required></label>
                 <label><input name="nick" type="text" placeholder="Ник" required></label>
                 <label><input name="email" type="email" placeholder="Mail" required></label>
+                <label><input name="password" type="text" placeholder="Пароль" required></label>
+                <label><input name="confirm_password" type="text" placeholder="Повтор пароля" required></label>
                 <label><input type="submit"></label>
             </form>
         </div>
